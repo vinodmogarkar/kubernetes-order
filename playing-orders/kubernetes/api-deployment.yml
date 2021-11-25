@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playing-orders
+  labels:
+    app: playing-orders
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playing-orders
+  template:
+    metadata:
+      labels:
+        app: playing-orders
+    spec:
+      containers:
+        - name: playing-orders
+          image: kalatunga/playing-orders
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9000
+          env:
+            - name: P_MYSQL_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-products
+                  key: database_url
+            - name: P_MYSQL_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-products
+                  key: database_user
+            - name: P_MYSQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-products
+                  key: database_password
+      volumes:
+        - name: mysql-persistence-storage
+          persistentVolumeClaim:
+            claimName: db-mysql-pvc-products

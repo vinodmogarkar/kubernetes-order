@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: playing-products
+  labels:
+    run: playing-products
+spec:
+  ports:
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
+      nodePort: 30020
+  type: NodePort
+  selector:
+    app: playing-products
