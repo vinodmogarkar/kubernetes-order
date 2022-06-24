@@ -83,9 +83,6 @@ select * from products ;
 select * from orders ;
 select * from order_items ;
 
-
-
-
 ```
 
 ## Step 4 - Clone and run the project
@@ -98,17 +95,21 @@ $ git clone https://github.com/thiagohernandes/kubernetes-order
             
 ```
 
-- import on Intellij
+- import on STS
 - run commands each projects: 'playing-products' and 'playing-orders' - folder kubernetes:
 
 ```
 $ cd kubernetes
 $ kubectl apply -f .
 
-$ kubectl describe pod <pod name>
+```
 
-$ kubectl logs deployment/<deployment name>
-$ kubectl logs deployment/playing-products
+
+
+Few useful commands 
+
+```
+$ kubectl describe pod <pod name>
 
 After Deployment of microserivce , access to it as 
 http://kwoker2:nodeport/path/{id}
@@ -119,8 +120,4 @@ How to see exception / errors in logs once application is deployed on kubernetes
 $ kubectl logs deployment/<deployment name>
 $ kubectl logs deployment/playing-products
 
-
 ```
-
-Happy code ;)
-
