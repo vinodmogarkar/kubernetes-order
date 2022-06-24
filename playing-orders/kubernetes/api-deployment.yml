@@ -17,13 +17,6 @@ spec:
       containers:
         - name: playing-orders
           image: kalatunga/playing-orders
-          resources:
-            requests:
-              memory: "600Mi"
-              cpu: "500m"
-            limits:
-              memory: "1Gi"
-              cpu: "1000m"
           imagePullPolicy: Always
           ports:
             - containerPort: 9000
@@ -46,4 +39,4 @@ spec:
       volumes:
         - name: mysql-persistence-storage
           persistentVolumeClaim:
-            claimName: db-mysql-pvc-products
+            claimName: mysql-pv-claim
